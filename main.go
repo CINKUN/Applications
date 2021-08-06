@@ -1,16 +1,17 @@
 package main
 
+// #include <stdlib.h>
+import "C"
 import (
 	"fmt"
-	"time"
-)
-
-var (
-	Debug       bool      = false
-	LogLevel    string    = "info"
-	startUpTime time.Time = time.Now()
+	"unsafe"
 )
 
 func main() {
-	fmt.Println(Debug, LogLevel, startUpTime)
+	var cString *C.char
+	cString = C.CString("Hello World!\n")
+	defer C.free(unsafe.Pointer(cString))
+	var b []byte
+	b = C.GoBytes(unsafe.Pointer(cString), C.int(14))
+	fmt.Print(string(b))
 }
