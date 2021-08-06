@@ -2,17 +2,15 @@ package main
 
 import (
 	"fmt"
+	"time"
+)
+
+var (
+	Debug       bool      = false
+	LogLevel    string    = "info"
+	startUpTime time.Time = time.Now()
 )
 
 func main() {
-	helloList := []string{
-		"Hello, world",
-		"Καλημέρα κόσμε",
-		"こんにちは世界",
-		"سلام دنیا‎",
-		"Привет, мир",
-	}
-	fmt.Println(len(helloList))
-	fmt.Println(helloList[len(helloList)-1])
-	fmt.Println(helloList[len(helloList)])
+	fmt.Println(Debug, LogLevel, startUpTime)
 }
